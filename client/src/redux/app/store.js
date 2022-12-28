@@ -5,7 +5,7 @@ import globalReducer from '../features/globalSlice'
 
 const store = configureStore({
     reducer: {
-        mode: globalReducer,
+        global: globalReducer,
 
     },
 })
