@@ -9,8 +9,8 @@ const path = require('path')
 const connectDb = require('./config/db')
 require('dotenv').config()
 
-
-
+const User = require('./models/userModel')
+const { dataUser } = require('./data/index')
 
 //initialize express app
 const app = express()
@@ -64,5 +64,8 @@ app.use('/sales', salesRouter)
 
 
 app.listen(PORT, (req, res) => {
+
+    //only add data ones
+    // User.insertMany(dataUser)
     console.log(`app running on port ${PORT}`)
 })
