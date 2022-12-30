@@ -10,7 +10,17 @@ const connectDb = require('./config/db')
 require('dotenv').config()
 
 const User = require('./models/userModel')
-const { dataUser } = require('./data/index')
+const Product = require('./models/productModel')
+const ProductStat = require('./models/productStatsModel')
+const Transaction = require('./models/transactionModel')
+const OverallStat = require('./models/overallStatsModel')
+const AffiliateStat = require('./models/affiliateStatsModel')
+const { dataAffiliateStat,
+    dataOverallStat,
+    dataProduct,
+    dataProductStat,
+    dataTransaction,
+    dataUser, } = require('./data/index')
 
 //initialize express app
 const app = express()
@@ -49,8 +59,13 @@ app.use('/', express.static(path.join(__dirname, '/public')))
 
 const clientRouter = require('./routes/clientRoute')
 const generalRouter = require('./routes/generalRoute')
-const managementRouter = require('./routes/managementRoute')
-const salesRouter = require('./routes/salesRoute')
+const productRouter = require('./routes/ProductRoute')
+const transactionsRouter = require('./routes/transactionsRoute')
+const geographyRouter = require('./routes/geographyRoute')
+const overallStatsRouter = require('./routes/overallStatsRoute')
+const adminRouter = require('./routes/adminRoute')
+const affiliateRouter = require('./routes/affiliateRoutes')
+
 
 
 
@@ -59,13 +74,17 @@ const salesRouter = require('./routes/salesRoute')
 
 app.use('/client', clientRouter)
 app.use('/general', generalRouter)
-app.use('/management', managementRouter)
-app.use('/sales', salesRouter)
+app.use('/client', productRouter)
+app.use('/transactions', transactionsRouter)
+app.use('/geography', geographyRouter)
+app.use('/stats', overallStatsRouter)
+app.use('/admin', adminRouter)
+app.use('/', affiliateRouter)
 
 
 app.listen(PORT, (req, res) => {
 
     //only add data ones
-    // User.insertMany(dataUser)
+    // AffiliateStat.insertMany(dataAffiliateStat)
     console.log(`app running on port ${PORT}`)
 })
