@@ -1,14 +1,14 @@
 
 const User = require('../models/userModel')
 
-const getCustomers = async (req, res) => {
+const getAdmin = async (req, res) => {
 
 
     try {
-        const customers = await User.find({ role: "user" }).select('-password')
+        const admin = await User.find({ role: "admin" }).select('-password')
 
 
-        res.status(200).json(customers)
+        res.status(200).json(admin)
 
 
     } catch (error) {
@@ -20,7 +20,7 @@ const getCustomers = async (req, res) => {
 }
 
 module.exports = {
-    getCustomers
+    getAdmin
 }
 
 

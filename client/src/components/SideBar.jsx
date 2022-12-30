@@ -93,7 +93,7 @@ const navItems = [
     },
 ];
 
-const SideBar = ({ isSideBarOpen, setIsSideBarOpen, drawerWidth, isNonMobile }) => {
+const SideBar = ({ isSideBarOpen, setIsSideBarOpen, drawerWidth, isNonMobile, user }) => {
 
     const { pathname } = useLocation()
 
@@ -127,9 +127,8 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, drawerWidth, isNonMobile }) 
                         },
                     }}
                 >
-
                     <Box width="100%">
-                        <Box m="1.5rem 2rem 2rem 3rem">
+                        <Box m="1.5rem 1rem 2rem 3rem">
                             <FlexBetween color={theme.palette.secondary.main}>
                                 <Box display="flex" alignItems="center" gap="0.5rem">
                                     <Typography variant="h4" fontWeight="bold">
@@ -143,7 +142,6 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, drawerWidth, isNonMobile }) 
                                 )}
                             </FlexBetween>
                         </Box>
-
                         <List>
                             {navItems.map(({ text, icon }) => {
                                 if (!icon) {
@@ -194,8 +192,43 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, drawerWidth, isNonMobile }) 
                             })}
                         </List>
                     </Box>
-                </Drawer>
 
+                    <Box bottom="2rem">
+                        <Divider />
+                        <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
+                            <Box
+                                component="img"
+                                alt="profile"
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6jbOip0adUapewfaodQboQhZT_6mMvQzMJ_Moi0RsuQ&s"
+                                height="40px"
+                                width="40px"
+                                borderRadius="50%"
+                                sx={{ objectFit: "cover" }}
+                            />
+                            <Box textAlign="left">
+                                <Typography
+                                    fontWeight="bold"
+                                    fontSize="0.9rem"
+                                    sx={{ color: theme.palette.secondary[100] }}
+                                >
+                                    {user.name}
+                                </Typography>
+                                <Typography
+                                    fontSize="0.8rem"
+                                    sx={{ color: theme.palette.secondary[200] }}
+                                >
+                                    {user.occupation}
+                                </Typography>
+                            </Box>
+                            <SettingsOutlined
+                                sx={{
+                                    color: theme.palette.secondary[300],
+                                    fontSize: "25px ",
+                                }}
+                            />
+                        </FlexBetween>
+                    </Box>
+                </Drawer>
             )}
         </Box>
     )
