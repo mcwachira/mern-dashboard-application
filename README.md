@@ -3,7 +3,8 @@
 
 
 
-<img src="./mern-Ecommerce.png">
+![](./mern-admin-dashboard.gif)
+
 ### Links
 
 - Solution URL: [Github](https://github.com/mcwachira/mern-dashboard-application)
