@@ -1,4 +1,4 @@
-# Full Stack App Dashboard  Built Using the Mern Stack adn Material ui 
+# Full Stack App Dashboard  Built Using the Mern Stack and Material ui 
 
 
 
